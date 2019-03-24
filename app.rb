@@ -1,7 +1,7 @@
 #encoding: utf-8
 require 'rubygems'
 require 'sinatra'
-require 'sinatra/reloader'
+
 
 get '/' do
 	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
@@ -24,7 +24,7 @@ post '/visit' do
 	@color = params[:color]
 
 	hh = { 	:username => 'Enter a name',
-	 		:phone => 'Entera phone number',
+	 		:phone => 'Enter a phone number',
 	 		:datetime => 'Enter a date nad time'}
 	hh.each do |key, value|
 		if params[key] ==''

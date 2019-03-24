@@ -25,10 +25,10 @@
 <div class="form-group">
   <label>Youre barber</label>
 	<select name="barber" class="form-control">
-  	<option value="walter">Walter White</option>
-  	<option value="jessie">Jessie Pinkman</option>
- 		<option value="gus">Gus Fring</option>
- 		<option value="jeff">Ya boi Jeff</option>
+  	<option value="walter" <%= @barber == 'walter' ? 'selected' : '' %> >Walter White</option>
+  	<option value="jessie" <%= @barber == 'jessie' ? 'selected' : '' %> >Jessie Pinkman</option>
+ 		<option value="gus" <%= @barber == 'gus' ? 'selected' : '' %> >Gus Fring</option>
+ 		<option value="jeff" <%= @barber == 'jeff' ? 'selected' : '' %> >Ya boi Jeff</option>
 	</select>
 	</p>
 

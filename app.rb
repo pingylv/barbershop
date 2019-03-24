@@ -27,10 +27,9 @@ get '/contacts' do
 	erb :contacts
 end
 get '/showusers' do
-	erb "this really be a bruh moment"
-end
-
-post '/showusers' do
+	db = get_db
+	@results = db.execute 'select * from users order by id desc'
+	erb :showusers
 end
 
 post '/visit' do

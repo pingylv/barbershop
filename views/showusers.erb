@@ -1,0 +1,26 @@
+<h3>List of users:</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">datestamp</th>
+      <th scope="col">barber</th>
+      <th scope="col">color</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @results.each do |row| %>
+    <tr>
+      <td><%= row[0]%></td>
+      <td><%= row[1]%></td>
+      <td><%= row[2]%></td>
+      <td><%= row[3]%></td>
+      <td><%= row[4]%></td>
+      <td><%= row[5]%></td>
+    </tr>
+<% end %>
+
+  </tbody>
+</table>

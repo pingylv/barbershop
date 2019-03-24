@@ -25,10 +25,10 @@
 <div class="form-group">
   <label>Youre barber</label>
 	<select name="barber" class="form-control">
-  	<option <%= @barber == 'Walter White' ? 'selected' : '' %> >Walter White</option>
-  	<option <%= @barber == 'Jessie Pinkman' ? 'selected' : '' %> >Jessie Pinkman</option>
- 		<option <%= @barber == 'Gus Fring' ? 'selected' : '' %> >Gus Fring</option>
- 		<option <%= @barber == 'Jeff' ? 'selected' : '' %> >Jeff</option>
+    <% @barbers.each do |item| %>
+      <option <%= @barber == item['name'] ? 'selected' : ''%>><%= item['name'] %></option>
+    <% end %>
+
 	</select>
 	</p>
 

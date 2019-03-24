@@ -9,6 +9,11 @@ def get_db
 	return db
 end
 
+before do
+	db = get_db
+	@barbers =db.execute 'select * from barbers'
+end
+
 def barber_exists? db, name
 	db.execute('select * from barbers where name=?', [name]).length > 0
 end

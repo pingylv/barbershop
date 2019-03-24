@@ -30,6 +30,21 @@ get '/showusers' do
 	erb "Hellow microsoft word"
 end
 
+post '/showusers' do
+
+
+db = SQLite3::Database.new 'barbershop.db'
+db.results_as_hash = true
+
+db.execute 'select * from users order by id desc' do |row|
+row['username']
+"\t---\t"
+row['datestamp']
+"====================================="
+end
+
+end
+
 post '/visit' do
 	@username = params[:username]
 	@phone = params[:phone]

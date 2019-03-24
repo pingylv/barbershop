@@ -27,22 +27,10 @@ get '/contacts' do
 	erb :contacts
 end
 get '/showusers' do
-	erb "Hellow microsoft word"
+	erb "this really be a bruh moment"
 end
 
 post '/showusers' do
-
-
-db = SQLite3::Database.new 'barbershop.db'
-db.results_as_hash = true
-
-db.execute 'select * from users order by id desc' do |row|
-row['username']
-"\t---\t"
-row['datestamp']
-"====================================="
-end
-
 end
 
 post '/visit' do

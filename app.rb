@@ -3,9 +3,13 @@ require 'rubygems'
 require 'sinatra'
 require 'sqlite3'
 
+def get_db
+	return SQLite3::Database.new 'barbershop.db'
+end
+
 configure do 
-	@db = SQLite3::Database.new 'barbershop.db'
-	@db.execute 'CREATE TABLE IF NOT EXISTS "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT, "username" TEXT, "phone" TEXT, "datestamp" TEXT, "barber" TEXT, "color" TEXT)'
+	db = get_db
+	db.execute 'CREATE TABLE IF NOT EXISTS "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT, "username" TEXT, "phone" TEXT, "datestamp" TEXT, "barber" TEXT, "color" TEXT)'
 end
 
 get '/' do
@@ -38,14 +42,14 @@ post '/visit' do
 		end
 	end
 
-	@title = 'Thank you!'
-	@message = "Dear #{@username}, #{@barber} will be waiing for you at #{@datetime}"
+	db = get_db
+	db.execute 'insert into users (username, phone, datestamp, barber, color) values (?,?,?,?,?)', [@username, @phone, @datetime, @barber, @color]
 	
-	f = File.open "./public/users.txt", "a"
-	f.write "User: #{@username}, Phone: #{@phone}, Date and time: #{@datetime}, Barber: #{@barber}, Color: #{@color}!"
-	f.close
+	@title = 'Thank you!'
+	@message = "Dear #{@username}, #{@barber} will be waiting for you at #{@datetime}"
 
 	erb :message
+
 end
 
 post '/contacts' do
@@ -61,4 +65,3 @@ post '/contacts' do
 
 	erb :message
 end
-

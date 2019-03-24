@@ -4,7 +4,9 @@ require 'sinatra'
 require 'sqlite3'
 
 def get_db
-	return SQLite3::Database.new 'barbershop.db'
+	db = SQLite3::Database.new 'barbershop.db'
+	db.results_as_hash = true
+	return db
 end
 
 configure do 
@@ -23,6 +25,9 @@ get '/visit' do
 end
 get '/contacts' do
 	erb :contacts
+end
+get '/showusers' do
+	erb "Hellow microsoft word"
 end
 
 post '/visit' do
